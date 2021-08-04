@@ -12,36 +12,36 @@ public class CalculateExchangeRateRequest implements Serializable {
 
 	@Size(min = 2, max = 5, message = "Moneda de origen debe tener minimo 2 caracteres")
 	@Pattern(regexp="^[A-Za-z]*$",message = "Moneda de origen solo debe contener texto")
-	private String monedaOrigen;
+	private String moneda_origen;
 	
 	@Size(min = 2, max = 5, message = "Moneda destino debe tener minimo 2 caracteres")
 	@Pattern(regexp="^[A-Za-z]*$",message = "Moneda destino solo debe contener texto")
-	private String monedaDestino;
+	private String moneda_destino;
 	
 	@Min(1)
 	private double monto;
 
-	public String getMonedaOrigen() {
-		return monedaOrigen;
+	public String getMoneda_origen() {
+		return moneda_origen;
 	}
 
-	public void setMonedaOrigen(String monedaOrigen) {
-		this.monedaOrigen = monedaOrigen;
+	public void setMoneda_origen(String moneda_origen) {
+		this.moneda_origen = moneda_origen;
 	}
 
-	public String getMonedaDestino() {
-		return monedaDestino;
+	public String getMoneda_destino() {
+		return moneda_destino;
 	}
 
-	public void setMonedaDestino(String monedaDestino) {
-		this.monedaDestino = monedaDestino;
+	public void setMoneda_destino(String moneda_destino) {
+		this.moneda_destino = moneda_destino;
 	}
 
 	public double getMonto() {
 		return monto;
 	}
 
-	public void setMonto(double amount) {
-		this.monto = amount;
+	public void setMonto(double monto) {
+		this.monto = monto;
 	}
 }

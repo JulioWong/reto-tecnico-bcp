@@ -26,18 +26,19 @@ public class ExchangeServiceImpl implements ExchangeService {
 	public Single<CalculateExchangeRateResponse> calculateExchangeRate(CalculateExchangeRateRequest requestExchangeRate) {
 		return Single.create(singleSubscriber -> {
 			Exchange data = exchangeDAO.findByLocalCurrencyAndForeignCurrency(
-				requestExchangeRate.getMonedaOrigen(), 
-				requestExchangeRate.getMonedaDestino()
+				requestExchangeRate.getMoneda_origen(), 
+				requestExchangeRate.getMoneda_destino()
 			);
 						
 			if (data != null) {
-				Double monto = requestExchangeRate.getMonto() / data.getConversionFactor();
+				Double montoCambio = requestExchangeRate.getMonto() / data.getConversionFactor();
 				DecimalFormat numberFormat = new DecimalFormat("#,##0.00");
 				CalculateExchangeRateResponse response = new CalculateExchangeRateResponse(
-					numberFormat.format(monto), 
+					requestExchangeRate.getMonto(),
+					numberFormat.format(montoCambio), 
 					data.getConversionFactor(), 
-					requestExchangeRate.getMonedaOrigen(), 
-					requestExchangeRate.getMonedaDestino()
+					requestExchangeRate.getMoneda_origen(), 
+					requestExchangeRate.getMoneda_destino()
 				);
 				
 				singleSubscriber.onSuccess(response);
@@ -50,10 +51,18 @@ public class ExchangeServiceImpl implements ExchangeService {
 	@Override
 	@Transactional
 	public Exchange saveExchangeRate(SaveExchangeRateRequest saveExchangeRateRequest) {
-		Exchange exchange = new Exchange();
-		exchange.setLocalCurrency(saveExchangeRateRequest.getMonedaOrigen());
-		exchange.setForeignCurrency(saveExchangeRateRequest.getMonedaDestino());
-		exchange.setConversionFactor(saveExchangeRateRequest.getTipoCambio());
-		return exchangeDAO.save(exchange);
+		Exchange exchangeDB = exchangeDAO.findByLocalCurrencyAndForeignCurrency(
+			saveExchangeRateRequest.getMoneda_origen(), 
+			saveExchangeRateRequest.getMoneda_destino()
+		);
+		
+		if (exchangeDB == null) {
+			Exchange exchange = new Exchange();
+			exchange.setLocalCurrency(saveExchangeRateRequest.getMoneda_origen());
+			exchange.setForeignCurrency(saveExchangeRateRequest.getMoneda_destino());
+			exchange.setConversionFactor(saveExchangeRateRequest.getTipo_cambio());
+			return exchangeDAO.save(exchange);
+		}
+		return exchangeDB;
 	}
 }

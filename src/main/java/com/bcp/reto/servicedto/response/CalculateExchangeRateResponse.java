@@ -5,28 +5,38 @@ import java.io.Serializable;
 public class CalculateExchangeRateResponse implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	private String monto;
+	private double monto;
+	private String monto_con_tipo_cambio;
 	private double tipo_cambio;
 	private String moneda_origen;
 	private String moneda_destino;
 	
-	public CalculateExchangeRateResponse(String monto, double tipo_cambio, String moneda_origen,
+	public CalculateExchangeRateResponse(double monto, String monto_con_tipo_cambio, double tipo_cambio, String moneda_origen,
 			String moneda_destino) {
 		super();
 		this.monto = monto;
+		this.monto_con_tipo_cambio = monto_con_tipo_cambio;
 		this.tipo_cambio = tipo_cambio;
 		this.moneda_origen = moneda_origen;
 		this.moneda_destino = moneda_destino;
 	}
 
-	public String getMonto() {
+	public double getMonto() {
 		return monto;
 	}
 	
-	public void setMonto(String monto) {
+	public void setMonto(double monto) {
 		this.monto = monto;
 	}
 	
+	public String getMonto_con_tipo_cambio() {
+		return monto_con_tipo_cambio;
+	}
+
+	public void setMonto_con_tipo_cambio(String monto_con_tipo_cambio) {
+		this.monto_con_tipo_cambio = monto_con_tipo_cambio;
+	}
+
 	public double getTipo_cambio() {
 		return tipo_cambio;
 	}

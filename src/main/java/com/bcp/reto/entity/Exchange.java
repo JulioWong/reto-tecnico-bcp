@@ -17,7 +17,7 @@ public class Exchange implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
-	private Long exchange_rate_id;
+	private Long exchangeRateId;
 	
 	@Column(name="local_currency")
 	private String localCurrency;
@@ -28,12 +28,12 @@ public class Exchange implements Serializable {
 	@Column(name="conversion_factor")
 	private double conversionFactor;
 
-	public Long getExchange_rate_id() {
-		return exchange_rate_id;
+	public Long getExchangeRateId() {
+		return exchangeRateId;
 	}
 
-	public void setExchange_rate_id(Long exchange_rate_id) {
-		this.exchange_rate_id = exchange_rate_id;
+	public void setExchangeRateId(Long exchangeRateId) {
+		this.exchangeRateId = exchangeRateId;
 	}
 
 	public String getLocalCurrency() {
