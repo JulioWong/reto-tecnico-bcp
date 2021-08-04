@@ -13,6 +13,18 @@ import javax.persistence.Table;
 @Table(name = "exchange_rate")
 public class Exchange implements Serializable {
 	
+	public Exchange(Long exchangeRateId, String localCurrency, String foreignCurrency, double conversionFactor) {
+		super();
+		this.exchangeRateId = exchangeRateId;
+		this.localCurrency = localCurrency;
+		this.foreignCurrency = foreignCurrency;
+		this.conversionFactor = conversionFactor;
+	}
+	
+	public Exchange() {
+		super();
+	}
+
 	private static final long serialVersionUID = 1L;
 	
 	@Id

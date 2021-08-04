@@ -19,17 +19,17 @@ import io.reactivex.Single;
 public class ExchangeServiceImpl implements ExchangeService {
 
 	@Autowired
-	private ExchangeRepository exchangeDAO;
+	private ExchangeRepository exchangeRepository;
 
 	@Override
 	@Transactional(readOnly = true)
 	public Single<CalculateExchangeRateResponse> calculateExchangeRate(CalculateExchangeRateRequest requestExchangeRate) {
 		return Single.create(singleSubscriber -> {
-			Exchange data = exchangeDAO.findByLocalCurrencyAndForeignCurrency(
+			Exchange data = exchangeRepository.findByLocalCurrencyAndForeignCurrency(
 				requestExchangeRate.getMoneda_origen(), 
 				requestExchangeRate.getMoneda_destino()
 			);
-						
+
 			if (data != null) {
 				Double montoCambio = requestExchangeRate.getMonto() / data.getConversionFactor();
 				DecimalFormat numberFormat = new DecimalFormat("#,##0.00");
@@ -51,7 +51,7 @@ public class ExchangeServiceImpl implements ExchangeService {
 	@Override
 	@Transactional
 	public Exchange saveExchangeRate(SaveExchangeRateRequest saveExchangeRateRequest) {
-		Exchange exchangeDB = exchangeDAO.findByLocalCurrencyAndForeignCurrency(
+		Exchange exchangeDB = exchangeRepository.findByLocalCurrencyAndForeignCurrency(
 			saveExchangeRateRequest.getMoneda_origen(), 
 			saveExchangeRateRequest.getMoneda_destino()
 		);
@@ -61,7 +61,7 @@ public class ExchangeServiceImpl implements ExchangeService {
 			exchange.setLocalCurrency(saveExchangeRateRequest.getMoneda_origen());
 			exchange.setForeignCurrency(saveExchangeRateRequest.getMoneda_destino());
 			exchange.setConversionFactor(saveExchangeRateRequest.getTipo_cambio());
-			return exchangeDAO.save(exchange);
+			return exchangeRepository.save(exchange);
 		}
 		return exchangeDB;
 	}
