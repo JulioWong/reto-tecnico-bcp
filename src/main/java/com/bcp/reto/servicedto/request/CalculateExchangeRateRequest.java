@@ -18,7 +18,7 @@ public class CalculateExchangeRateRequest implements Serializable {
 	@Pattern(regexp="^[A-Za-z]*$",message = "Moneda destino solo debe contener texto")
 	private String moneda_destino;
 	
-	@Min(1)
+	@Min(0)
 	private double monto;
 
 	public String getMoneda_origen() {

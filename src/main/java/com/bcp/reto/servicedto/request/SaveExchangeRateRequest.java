@@ -18,7 +18,7 @@ public class SaveExchangeRateRequest implements Serializable {
 	@Pattern(regexp="^[A-Za-z]*$",message = "Moneda destino solo debe contener texto")
 	private String moneda_destino;
 	
-	@Min(1)
+	@Min(0)
 	private double tipo_cambio;
 
 	public String getMoneda_origen() {

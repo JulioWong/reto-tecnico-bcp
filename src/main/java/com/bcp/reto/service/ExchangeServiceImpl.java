@@ -31,6 +31,11 @@ public class ExchangeServiceImpl implements ExchangeService {
 			);
 
 			if (data != null) {
+				
+				if (data.getConversionFactor() == 0) {
+					throw new RuntimeException("El valor de tipo de cambio debe ser mayor a 0");
+				}
+				
 				Double montoCambio = requestExchangeRate.getMonto() / data.getConversionFactor();
 				DecimalFormat numberFormat = new DecimalFormat("#,##0.00");
 				CalculateExchangeRateResponse response = new CalculateExchangeRateResponse(
@@ -63,6 +68,8 @@ public class ExchangeServiceImpl implements ExchangeService {
 			exchange.setConversionFactor(saveExchangeRateRequest.getTipo_cambio());
 			return exchangeRepository.save(exchange);
 		}
-		return exchangeDB;
+		
+		exchangeDB.setConversionFactor(saveExchangeRateRequest.getTipo_cambio());
+		return exchangeRepository.save(exchangeDB);
 	}
 }
