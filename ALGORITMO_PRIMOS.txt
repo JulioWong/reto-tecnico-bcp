@@ -1,0 +1,77 @@
+docker build -t reto_bcp .
+docker run -dp 8040:8040 reto_bcp
+
+
+npm install -g @angular/cli@latest
+ng new my-first-project
+cd my-first-project
+ng serve
+
+
+
+ALGORITMO TEST BCP
+-------------------
+
+package test;
+
+import java.util.ArrayList;
+
+public class primos {
+	
+	static boolean isPrime(int num) {
+		int conta = 0;
+		
+		for (int i = 1; i <= num; i++) {
+			if (num % i == 0) conta++;
+		}
+		
+		if (conta == 2) return true;
+		return false;
+	}
+
+	public static void main(String[] args) {
+		
+		/*
+		 * 
+		 * Dado un arreglo con los siguientes números [1, 2, 8, 23, 5, 15, 17, 15] mostrar un arreglo solo con números primos y ordenado: [2, 5, 17, 23]
+		 */
+		
+		int[] numero = {1, 2, 8, 23, 5, 15, 17, 15};
+		ArrayList<Integer> primos = new ArrayList<Integer>();
+		
+		for (int i = 0; i < numero.length; i++) {
+			if (isPrime(numero[i])) {
+				
+				if (primos.size() == 0) primos.add(numero[i]);
+				else {					
+					if (primos.size() == 0) {
+						primos.add(numero[i]);
+						
+					} else {
+						
+						int k = 0;
+						int aux = 0;
+						
+						for (int n = 0; n < primos.size(); n++) {
+							
+							if(primos.get(n) > numero[i]) {
+								k = n;
+								aux = primos.get(n);
+							}
+						}
+						
+						if (k > 0) {
+							primos.set(k, numero[i]);
+							primos.add(aux);
+							k = 0;
+						} else {
+							primos.add(numero[i]);
+						}
+					}
+				}
+			}
+		}
+		System.out.println(primos);
+	}
+}
+
