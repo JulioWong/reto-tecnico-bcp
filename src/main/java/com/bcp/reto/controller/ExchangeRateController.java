@@ -1,5 +1,7 @@
 package com.bcp.reto.controller;
 
+import java.util.ArrayList;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +41,21 @@ public class ExchangeRateController {
 		consumes = MediaType.APPLICATION_JSON_VALUE, 
 		produces = MediaType.APPLICATION_JSON_VALUE
 	)
-	public ResponseEntity<?> save(@Valid @RequestBody SaveExchangeRateRequest exchangeRateRequest) {
-		Exchange response = exchangeService.saveExchangeRate(exchangeRateRequest);
-		return new ResponseEntity<>(response, HttpStatus.CREATED);
-				
+	public ResponseEntity<?> save(@Valid @RequestBody ArrayList<SaveExchangeRateRequest> exchangeRateRequest) {
+		ArrayList<Exchange> e = exchangeService.saveExchangeRate(exchangeRateRequest);
+		return new ResponseEntity<>(e, HttpStatus.CREATED);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

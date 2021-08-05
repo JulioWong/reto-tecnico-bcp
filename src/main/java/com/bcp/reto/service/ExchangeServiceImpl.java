@@ -4,6 +4,7 @@ import com.bcp.reto.servicedto.request.SaveExchangeRateRequest;
 import com.bcp.reto.servicedto.response.CalculateExchangeRateResponse;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -55,21 +56,28 @@ public class ExchangeServiceImpl implements ExchangeService {
 
 	@Override
 	@Transactional
-	public Exchange saveExchangeRate(SaveExchangeRateRequest saveExchangeRateRequest) {
-		Exchange exchangeDB = exchangeRepository.findByLocalCurrencyAndForeignCurrency(
-			saveExchangeRateRequest.getMoneda_origen(), 
-			saveExchangeRateRequest.getMoneda_destino()
-		);
+	public ArrayList<Exchange> saveExchangeRate(ArrayList<SaveExchangeRateRequest> saveExchangeRateRequest) {
 		
-		if (exchangeDB == null) {
-			Exchange exchange = new Exchange();
-			exchange.setLocalCurrency(saveExchangeRateRequest.getMoneda_origen());
-			exchange.setForeignCurrency(saveExchangeRateRequest.getMoneda_destino());
-			exchange.setConversionFactor(saveExchangeRateRequest.getTipo_cambio());
-			return exchangeRepository.save(exchange);
+		ArrayList<Exchange> listExchange = new ArrayList<Exchange>();
+		
+		for (SaveExchangeRateRequest exReq : saveExchangeRateRequest) {
+			Exchange exchangeDB = exchangeRepository.findByLocalCurrencyAndForeignCurrency(
+				exReq.getMoneda_origen(), 
+				exReq.getMoneda_destino()
+			);
+			
+			if (exchangeDB == null) {
+				Exchange exchange = new Exchange();
+				exchange.setLocalCurrency(exReq.getMoneda_origen());
+				exchange.setForeignCurrency(exReq.getMoneda_destino());
+				exchange.setConversionFactor(exReq.getTipo_cambio());
+				listExchange.add(exchangeRepository.save(exchange));
+			} else {
+				exchangeDB.setConversionFactor(exReq.getTipo_cambio());
+				listExchange.add(exchangeRepository.save(exchangeDB));
+			}
 		}
 		
-		exchangeDB.setConversionFactor(saveExchangeRateRequest.getTipo_cambio());
-		return exchangeRepository.save(exchangeDB);
+		return listExchange;
 	}
 }
