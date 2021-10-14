@@ -13,9 +13,21 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>desafio_tecnico</name>
 	<description>Desafio técnico Java</description>
+	
+	
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+	
+	
+	<scm>
+        <connection>scm:JulioWong:theanimalsW2$@github.com/JulioWong/reto-tecnico-bcp.git</connection>
+        <developerConnection>scm:JulioWong:theanimalsW2$@github.com/JulioWong/reto-tecnico-bcp.git</developerConnection>
+        <url>https://github.com/kalaspuffar/VersioningDemo</url>
+        <tag>@{project.version}</tag>
+    </scm>
+	
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -68,6 +80,9 @@
 		    <version>2.8.0</version>
 		</dependency>
 	</dependencies>
+	
+	
+	
 	<build>
 		<plugins>
 			<plugin>
