@@ -19,12 +19,12 @@
 	</properties>
 	
 	
-	<!--<scm>
+	<scm>
         <connection>scm:git:ssh://git@github.com/JulioWong/reto-tecnico-bcp.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/JulioWong/reto-tecnico-bcp.git</developerConnection>
         <url>https://github.com/JulioWong/reto-tecnico-bcp/tree/master</url>
         <tag>desafio_tecnico-0.0.1</tag>
-    </scm>-->
+    </scm>
     
 	
 	<dependencies>
