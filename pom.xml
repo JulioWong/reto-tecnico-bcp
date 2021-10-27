@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.bcp</groupId>
 	<artifactId>desafio_tecnico</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.4</version>
 	<name>desafio_tecnico</name>
 	<description>Desafio técnico Java</description>
 	
@@ -23,7 +23,7 @@
         <connection>scm:git:ssh://git@github.com/JulioWong/reto-tecnico-bcp.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/JulioWong/reto-tecnico-bcp.git</developerConnection>
         <url>https://github.com/JulioWong/reto-tecnico-bcp/tree/master</url>
-        <tag>desafio_tecnico-0.0.1</tag>
+        <tag>v0.0.4</tag>
     </scm>
     
 	
@@ -152,7 +152,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore />
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
