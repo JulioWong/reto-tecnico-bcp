@@ -19,12 +19,12 @@
 	</properties>
 	
 	
-	<scm>
+	<!--<scm>
         <connection>scm:git:ssh://git@github.com/JulioWong/reto-tecnico-bcp.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/JulioWong/reto-tecnico-bcp.git</developerConnection>
         <url>https://github.com/JulioWong/reto-tecnico-bcp/tree/master</url>
         <tag>desafio_tecnico-0.0.1</tag>
-    </scm>
+    </scm>-->
     
 	
 	<dependencies>
@@ -84,14 +84,14 @@
 	
 	<build>
 		<plugins>
-			<plugin>
+			<!--<plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-release-plugin</artifactId>
 		        <version>3.0.0-M4</version>
 		        <configuration>
 		          <tagNameFormat>v@{project.version}</tagNameFormat>
 		        </configuration>
-		    </plugin>
+		    </plugin>-->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
