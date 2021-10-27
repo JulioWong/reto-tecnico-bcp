@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.bcp</groupId>
 	<artifactId>desafio_tecnico</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<name>desafio_tecnico</name>
 	<description>Desafio técnico Java</description>
 	
@@ -96,6 +96,35 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			
+			<plugin>
+	            <groupId>org.jfrog.buildinfo</groupId>
+	            <artifactId>artifactory-maven-plugin</artifactId>
+	            <version>3.3.0</version>
+	            <inherited>false</inherited>
+	            <executions>
+	                <execution>
+	                    <id>build-info</id>
+	                    <goals>
+	                        <goal>publish</goal>
+	                    </goals>
+	                    <configuration>
+	                        <deployProperties>
+	                            <gradle>awesome</gradle>
+	                            <review.team>qa</review.team>
+	                        </deployProperties>
+	                        <publisher>
+							  <contextUrl>${artifactoryUrl}</contextUrl>
+							  <username>${username}</username>
+							  <password>${password}</password>
+							  <repoKey>release</repoKey>
+							  <snapshotRepoKey>snapshot</snapshotRepoKey>
+							</publisher>
+	                    </configuration>
+	                </execution>
+	            </executions>
+	        </plugin>
 		</plugins>
 	</build>
 </project>
