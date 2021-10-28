@@ -80,6 +80,12 @@
 		</dependency>
 	</dependencies>
 	
+	<distributionManagement>
+        <repository>
+            <id>snapshots</id>
+            <url>http://localhost:8081/artifactory/demo-libs-snapshot</url>
+        </repository>
+    </distributionManagement>
 	
 	
 	<build>
@@ -96,70 +102,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
-			
-			<plugin>
-	            <groupId>org.jfrog.buildinfo</groupId>
-	            <artifactId>artifactory-maven-plugin</artifactId>
-	            <version>3.3.0</version>
-	            <inherited>false</inherited>
-	            <executions>
-	                <execution>
-	                    <id>build-info</id>
-	                    <goals>
-	                        <goal>publish</goal>
-	                    </goals>
-	                    <configuration>
-	                        <deployProperties>
-	                            <gradle>awesome</gradle>
-	                            <review.team>qa</review.team>
-	                        </deployProperties>
-	                        <publisher>
-							  <contextUrl>${artifactoryUrl}</contextUrl>
-							  <username>${username}</username>
-							  <password>${password}</password>
-							  <repoKey>release</repoKey>
-							  <snapshotRepoKey>snapshot</snapshotRepoKey>
-							</publisher>
-	                    </configuration>
-	                </execution>
-	            </executions>
-	        </plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.jfrog.buildinfo
-										</groupId>
-										<artifactId>
-											artifactory-maven-plugin
-										</artifactId>
-										<versionRange>
-											[3.3.0,)
-										</versionRange>
-										<goals>
-											<goal>publish</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 </project>
