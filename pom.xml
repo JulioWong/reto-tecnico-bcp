@@ -98,6 +98,20 @@
 		        <configuration>
 		          <tagNameFormat>v@{project.version}</tagNameFormat>
 		        </configuration>
+		        <executions>
+			        <execution>
+			            <id>deploy-jar-file</id>
+			            <phase>deploy</phase>
+			            <goals>
+			                <goal>deploy-file</goal>
+			            </goals>
+			            <configuration>
+			                <url>http://localhost:8081/artifactory/demo-libs-release</url>
+			                <repositoryId>central</repositoryId>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			    </executions>
 		    </plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
