@@ -83,9 +83,14 @@
 	
 	<distributionManagement>
         <repository>
-            <id>snapshots</id>
-            <url>http://localhost:8081/artifactory/demo-libs-snapshot</url>
+            <id>central</id>
+            <url>http://localhost:8081/artifactory/demo-libs-release-local</url>
         </repository>
+        <snapshotRepository>
+       <id>central</id>
+       <name>Snapshot Repository</name>
+        <url>http://localhost:8082/artifactory/demo-libs-snapshot-local</url>
+     </snapshotRepository>
     </distributionManagement>
 	
 	
