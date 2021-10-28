@@ -16,7 +16,6 @@
 	
 	<properties>
 		<java.version>11</java.version>
-		<project.scm.id>my-scm-server</project.scm.id>
 	</properties>
 	
 	
