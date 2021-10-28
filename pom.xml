@@ -102,9 +102,6 @@
 			        <execution>
 			            <id>deploy-jar-file</id>
 			            <phase>deploy</phase>
-			            <goals>
-			                <goal>deploy</goal>
-			            </goals>
 			            <configuration>
 			                <url>http://localhost:8081/artifactory/demo-libs-release</url>
 			                <repositoryId>central</repositoryId>
