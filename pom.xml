@@ -84,7 +84,7 @@
 	<distributionManagement>
         <repository>
             <id>central</id>
-            <url>http://localhost:8081/artifactory/demo-libs-release-local</url>
+            <url>http://localhost:8082/artifactory/demo-libs-release-local</url>
         </repository>
         <snapshotRepository>
        <id>central</id>
