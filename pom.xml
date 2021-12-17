@@ -13,9 +13,7 @@
 	<name>desafio_tecnico</name>
 	<description>Desafio técnico Java</description>
 	
-	
 	<properties>
-		<java.version>11</java.version>
 		<project.scm.id>my-scm-server</project.scm.id>
 	</properties>
 	
@@ -27,7 +25,6 @@
         <tag>v0.0.4</tag>
     </scm>
     
-	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -79,23 +76,24 @@
 		    <artifactId>springfox-swagger-ui</artifactId>
 		    <version>2.8.0</version>
 		</dependency>
+		
 	</dependencies>
 	
 	<distributionManagement>
         <repository>
             <id>central</id>
-            <url>http://localhost:8082/artifactory/demo-libs-release-local</url>
+            <url>http://localhost:8081/artifactory/demo-libs-release</url>
         </repository>
         <snapshotRepository>
-       <id>central</id>
-       <name>Snapshot Repository</name>
-        <url>http://localhost:8082/artifactory/demo-libs-snapshot-local</url>
-     </snapshotRepository>
+			<id>central</id>
+			<name>Snapshot Repository</name>
+			<url>http://localhost:8081/artifactory/demo-libs-snapshot</url>
+		</snapshotRepository>
     </distributionManagement>
-	
 	
 	<build>
 		<plugins>
+			
 			<plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-release-plugin</artifactId>
@@ -104,6 +102,7 @@
 		          <tagNameFormat>v@{project.version}</tagNameFormat>
 		        </configuration>
 		    </plugin>
+			
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
