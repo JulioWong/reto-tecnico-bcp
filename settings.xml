@@ -126,13 +126,13 @@ under the License.
     <!-- Another sample, using keys to authenticate.-->
     <server>
       <id>my-scm-server</id>
-      <privateKey>C:\Users\julio\.ssh\id_rsa</privateKey>
+      <privateKey>C:\Users\user\.ssh\id_rsa</privateKey>
       <passphrase></passphrase>
     </server>
 
     <server>
       <username>admin</username>
-      <password>AP7bq2KVmL3Us7oYzYeWtuiBPUY</password>
+      <password>AP4X4vndU3t67VQZiJLpgd2DFWt</password>
       <id>central</id>
     </server>
     <!--<server>

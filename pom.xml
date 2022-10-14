@@ -19,11 +19,11 @@
 	
 	
 	<scm>
-        <connection>scm:git:ssh://git@github.com/JulioWong/reto-tecnico-bcp.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/JulioWong/reto-tecnico-bcp.git</developerConnection>
-        <url>https://github.com/JulioWong/reto-tecnico-bcp</url>
-        <tag>v0.0.4</tag>
-    </scm>
+		<connection>scm:git:ssh://git@github.com/JulioWong/reto-tecnico-bcp.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/JulioWong/reto-tecnico-bcp.git</developerConnection>
+		<url>https://github.com/JulioWong/reto-tecnico-bcp</url>
+		<tag>v0.0.4</tag>
+	</scm>
     
 	<dependencies>
 		<dependency>
@@ -80,16 +80,16 @@
 	</dependencies>
 	
 	<distributionManagement>
-        <repository>
-            <id>central</id>
-            <url>http://localhost:8081/artifactory/demo-libs-release</url>
-        </repository>
-        <snapshotRepository>
+		<repository>
+			<id>central</id>
+			<url>http://localhost:8081/artifactory/usa1-release/</url>
+		</repository>
+		<snapshotRepository>
 			<id>central</id>
 			<name>Snapshot Repository</name>
-			<url>http://localhost:8081/artifactory/demo-libs-snapshot</url>
+			<url>http://localhost:8081/artifactory/usa1-snapshot/</url>
 		</snapshotRepository>
-    </distributionManagement>
+	</distributionManagement>
 	
 	<build>
 		<plugins>
