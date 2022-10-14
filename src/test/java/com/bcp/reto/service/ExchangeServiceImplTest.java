@@ -1,6 +1,5 @@
 package com.bcp.reto.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -43,8 +42,7 @@ public class ExchangeServiceImplTest {
 		TestObserver<CalculateExchangeRateResponse> testObserver = exchangeService.calculateExchangeRate(calculateExchangeRateRequest).test();
 		testObserver.awaitTerminalEvent();
 		testObserver.assertValue(CalculateExchangeRateResponse -> CalculateExchangeRateResponse.getMonto_con_tipo_cambio().equals("193.38"));
-		//verify(exchangeRepository, Mockito.times(1)).findByLocalCurrencyAndForeignCurrency(Mockito.anyString(), Mockito.anyString());
-		assertEquals(2, 1);
+		verify(exchangeRepository, Mockito.times(1)).findByLocalCurrencyAndForeignCurrency(Mockito.anyString(), Mockito.anyString());
     }
 
 }
