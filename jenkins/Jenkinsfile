@@ -6,14 +6,24 @@ pipeline {
         }
     }
     stages {
-        stage('Build') {
-            steps {
-                sh 'mvn -B -DskipTests clean package'
-            }
-        }
         stage('Unit Test') { 
             steps {
                 sh 'mvn clean test'
+            }
+        }
+        stage('Static Analysis') {
+            steps {
+                sh 'echo Hola mundo'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'echo Build'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo Deploy'
             }
         }
     }
