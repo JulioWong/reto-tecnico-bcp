@@ -82,12 +82,12 @@
 	<distributionManagement>
 		<repository>
 			<id>central</id>
-			<url>http://localhost:8081/artifactory/usa1-release/</url>
+			<url>http://172.20.0.6:8081/artifactory/usa1-release/</url>
 		</repository>
 		<snapshotRepository>
 			<id>central</id>
 			<name>Snapshot Repository</name>
-			<url>http://localhost:8081/artifactory/usa1-snapshot/</url>
+			<url>http://172.20.0.6:8081/artifactory/usa1-snapshot/</url>
 		</snapshotRepository>
 	</distributionManagement>
 	
