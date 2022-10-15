@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.bcp</groupId>
 	<artifactId>desafio_tecnico</artifactId>
-	<version>0.0.16-SNAPSHOT</version>
+	<version>0.0.15-SNAPSHOT</version>
 	<name>desafio_tecnico</name>
 	<description>Desafio técnico Java</description>
 	
@@ -82,12 +82,12 @@
 	<distributionManagement>
 		<repository>
 			<id>central</id>
-			<url>http://localhost:8081/artifactory/usa1-release/</url>
+			<url>http://172.20.0.5:8081/artifactory/usa1-release/</url>
 		</repository>
 		<snapshotRepository>
 			<id>central</id>
 			<name>Snapshot Repository</name>
-			<url>http://localhost:8081/artifactory/usa1-snapshot/</url>
+			<url>http://172.20.0.5:8081/artifactory/usa1-snapshot/</url>
 		</snapshotRepository>
 	</distributionManagement>
 	
