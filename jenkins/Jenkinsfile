@@ -21,6 +21,9 @@ pipeline {
             }
         }*/
         stage('Build') {
+            environment {
+                GIT_SSH_COMMAND = "ssh -o StrictHostKeyChecking=no"
+            }
             steps {
                 sh """
                 git config --global user.email julioo.wong@gmail.com
