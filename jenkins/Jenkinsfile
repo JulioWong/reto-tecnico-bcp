@@ -16,7 +16,7 @@ pipeline {
         stage('Static Analysis') {
             steps {
                 withCredentials([string(credentialsId: 'sonar_login', variable: 'SECRET')]) { //set SECRET with the credential content
-                    sh 'mvn sonar:sonar -Dsonar.login=$SECRET -Dsonar.projectKey=Test1'
+                    sh 'mvn sonar:sonar -Dsonar.host.url=http://172.20.0.7:9000 -Dsonar.login=$SECRET -Dsonar.projectKey=Test1'
                 }
             }
         }
