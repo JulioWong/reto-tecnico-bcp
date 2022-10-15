@@ -31,6 +31,8 @@ pipeline {
 
                 whoami
 
+                ls /root/.ssh
+
                 cat /root/.ssh/id_rsa.pub
                 """
                 
