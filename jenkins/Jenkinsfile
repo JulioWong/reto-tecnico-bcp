@@ -31,8 +31,8 @@ pipeline {
 
                 whoami
 
-                ls /root/.ssh
-                
+                ssh -T git@github.com
+
                 """
                 
                 configFileProvider([configFile(fileId: 'acaf626e-bcad-47c2-9ac8-66e73f40f3ce', variable: 'MAVEN_SETTINGS')]) {
