@@ -24,7 +24,9 @@ pipeline {
             steps {
                 sh 'mvn clean install'
                 configFileProvider([configFile(fileId: 'acaf626e-bcad-47c2-9ac8-66e73f40f3ce', variable: 'MAVEN_SETTINGS')]) {
-                    sh 'mvn clean package -DskipTests=true -s $MAVEN_SETTINGS deploy:deploy'
+                    // sh 'mvn clean package -DskipTests=true -s $MAVEN_SETTINGS deploy:deploy'
+                    sh 'mvn -DskipTests=true -s $MAVEN_SETTINGS release:prepare'
+                    sh 'mvn -DskipTests=true -s $MAVEN_SETTINGS release:perform'
                 }
             }
         }
