@@ -124,11 +124,11 @@ under the License.
     -->
 
     <!-- Another sample, using keys to authenticate.-->
-    <server>
+    <!--<server>
       <id>my-scm-server</id>
       <privateKey>C:\Users\user\.ssh\id_rsa</privateKey>
       <passphrase></passphrase>
-    </server>
+    </server>-->
 
     <server>
       <username>admin</username>
