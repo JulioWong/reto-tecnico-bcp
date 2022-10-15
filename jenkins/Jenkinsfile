@@ -22,6 +22,7 @@ pipeline {
         }
         stage('Build') {
             steps {
+                sh 'mvn release:clean'
                 sh 'git config --global user.email "julioo.wong@gmail.com"'
                 sh 'git config --global user.name "Julio Wong"'
                 
