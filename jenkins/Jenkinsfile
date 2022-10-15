@@ -15,7 +15,10 @@ pipeline {
         }
         stage('Static Analysis') {
             steps {
-                sh 'echo Hola mundo'
+                withCredentials([string(credentialsId: 'sonar_login', variable: 'SECRET')]) { //set SECRET with the credential content
+                    echo "My secret text is '${SECRET}'"
+                }
+                //sh 'mvn sonar:sonar -Dsonar.login=sqp_5ebdbad278fb4f842779488059441188dbf96eb0 -Dsonar.projectKey=Test1'
             }
         }
         stage('Build') {
