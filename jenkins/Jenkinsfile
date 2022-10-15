@@ -31,7 +31,7 @@ pipeline {
 
                 whoami
 
-                ls /root/.ssh
+                ssh -T git@github.com
 
                 """
                 
