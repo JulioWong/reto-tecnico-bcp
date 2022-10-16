@@ -11,7 +11,7 @@
 	<artifactId>desafio_tecnico</artifactId>
 	<version>0.0.19-SNAPSHOT</version>
 	<name>desafio_tecnico</name>
-	<description>Desafio técnico Java 1</description>
+	<description>Desafio técnico Java</description>
 	
 	<properties>
 		<project.scm.id>my-scm-server</project.scm.id>
