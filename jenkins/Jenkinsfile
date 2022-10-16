@@ -28,16 +28,11 @@ pipeline {
                 sh """
                 git config --global user.email julioo.wong@gmail.com
                 git config --global user.name JulioWong
-
-                whoami
-
-                hostname
-
                 """
                 
                 configFileProvider([configFile(fileId: 'acaf626e-bcad-47c2-9ac8-66e73f40f3ce', variable: 'MAVEN_SETTINGS')]) {
                     // sh 'mvn clean package -DskipTests=true -s $MAVEN_SETTINGS deploy:deploy'
-                    // sh 'mvn -DskipTests=true -s $MAVEN_SETTINGS --batch-mode release:clean release:prepare release:perform'
+                    sh 'mvn -DskipTests=true -s $MAVEN_SETTINGS --batch-mode release:clean release:prepare release:perform'
                 }
             }
         }
