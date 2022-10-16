@@ -40,6 +40,8 @@ pipeline {
                     hostname
 
                     git status
+
+                    git push origin master
                     """
                 }
             }
