@@ -28,10 +28,6 @@ pipeline {
                 sh """
                 git config --global user.email julioo.wong@gmail.com
                 git config --global user.name JulioWong
-
-                cat /root/.ssh/id_rsa.pub
-
-                ssh -T git@github.com
                 """
                 
                 configFileProvider([configFile(fileId: 'acaf626e-bcad-47c2-9ac8-66e73f40f3ce', variable: 'MAVEN_SETTINGS')]) {
