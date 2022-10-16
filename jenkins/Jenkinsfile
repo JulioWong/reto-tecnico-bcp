@@ -6,7 +6,7 @@ pipeline {
         }
     }
     stages {
-        /*stage('Unit Test') { 
+        stage('Unit Test') { 
             steps {
                 configFileProvider([configFile(fileId: 'acaf626e-bcad-47c2-9ac8-66e73f40f3ce', variable: 'MAVEN_SETTINGS')]) {
                     sh 'mvn -s $MAVEN_SETTINGS clean test'
@@ -19,7 +19,7 @@ pipeline {
                     sh 'mvn sonar:sonar -Dsonar.host.url=http://172.20.0.7:9000 -Dsonar.login=$SECRET -Dsonar.projectKey=Test1'
                 }
             }
-        }*/
+        }
         stage('Build') {
             environment {
                 GIT_SSH_COMMAND = "ssh -o StrictHostKeyChecking=no"
