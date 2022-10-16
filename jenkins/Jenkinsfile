@@ -39,7 +39,7 @@ pipeline {
 
                     hostname
 
-                    ssh -T git@github.com
+                    git status
                     """
                 }
             }
