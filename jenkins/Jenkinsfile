@@ -39,6 +39,8 @@ pipeline {
 
                     hostname
 
+                    whoami
+
                     git status
 
                     git push origin master
