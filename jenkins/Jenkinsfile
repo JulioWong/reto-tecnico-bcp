@@ -1,12 +1,13 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.8.5-jdk-11'
-            args '-v /root/.m2:/root/.m2 -v --net="tallerdeinvestigacin_devops"'
-        }
-    }
+    
     stages {
         /*stage('Unit Test') { 
+            agent {
+                docker {
+                    image 'maven:3.8.5-jdk-11'
+                    args '-v /root/.m2:/root/.m2 -v --net="tallerdeinvestigacin_devops"'
+                }
+            }
             steps {
                 configFileProvider([configFile(fileId: 'acaf626e-bcad-47c2-9ac8-66e73f40f3ce', variable: 'MAVEN_SETTINGS')]) {
                     sh 'mvn -s $MAVEN_SETTINGS clean test'
