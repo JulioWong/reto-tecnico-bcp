@@ -22,7 +22,7 @@ pipeline {
                 }
             }
             steps {
-                withCredentials([string(credentialsId: 'sonar_login', variable: 'SECRET')]) { //set SECRET with the credential content
+                withCredentials([string(credentialsId: 'sonar_login', variable: 'SECRET')]) {
                     sh 'mvn sonar:sonar -Dsonar.host.url=http://172.20.0.2:9000 -Dsonar.login=$SECRET -Dsonar.projectKey=Test1'
                 }
             }
