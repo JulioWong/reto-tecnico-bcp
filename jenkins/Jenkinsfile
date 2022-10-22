@@ -6,7 +6,7 @@ pipeline {
         }
     }
     stages {
-        stage('Unit Test') { 
+        /*stage('Unit Test') { 
             steps {
                 configFileProvider([configFile(fileId: 'acaf626e-bcad-47c2-9ac8-66e73f40f3ce', variable: 'MAVEN_SETTINGS')]) {
                     sh 'mvn -s $MAVEN_SETTINGS clean test'
@@ -35,10 +35,20 @@ pipeline {
                     sh 'mvn -DskipTests=true -s $MAVEN_SETTINGS --batch-mode release:clean release:prepare release:perform'
                 }
             }
-        }
+        }*/
         stage('Deploy') {
+            environment {
+                ACCESS_KEY_ID = credentials('AccessKeyID')
+                SECRET_ACCESS_KEY = credentials('SecretAccessKey')
+            }
             steps {
-                sh 'echo Deploy'
+                sh """
+                apt-get update
+                curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+                unzip awscliv2.zip
+                ./aws/install
+                aws --version
+                """
             }
         }
     }
