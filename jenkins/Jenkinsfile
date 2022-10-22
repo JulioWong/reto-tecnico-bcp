@@ -38,8 +38,8 @@ pipeline {
         }*/
         stage('Deploy') {
             environment {
-                ACCESS_KEY_ID = credentials('AccessKeyID')
-                SECRET_ACCESS_KEY = credentials('SecretAccessKey')
+                AWS_ACCESS_KEY_ID = credentials('AccessKeyID')
+                AWS_SECRET_ACCESS_KEY = credentials('SecretAccessKey')
             }
             steps {
                 sh """
@@ -49,6 +49,8 @@ pipeline {
                 ./aws/install
                 aws --version
                 """
+
+                sh 'aws configure set region us-east-1'
             }
         }
     }
