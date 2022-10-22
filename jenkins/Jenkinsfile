@@ -45,6 +45,7 @@ pipeline {
             }
             steps {
                 sh 'docker ps'
+                sh 'aws --version'
             }
             /*
             steps {
