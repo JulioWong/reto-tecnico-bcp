@@ -44,23 +44,10 @@ pipeline {
                 AWS_SECRET_ACCESS_KEY = credentials('SecretAccessKey')
             }
             steps {
-                sh 'docker ps'
+                sh 'aws configure set region us-east-1'
+                sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 235274383227.dkr.ecr.us-east-1.amazonaws.com'
                 sh 'aws --version'
             }
-            /*
-            steps {
-                sh """
-                apt-get update
-                curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-                unzip -o awscliv2.zip
-                ./aws/install
-                """
-
-                sh 'aws configure set region us-east-1'
-
-                sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 235274383227.dkr.ecr.us-east-1.amazonaws.com'
-            }
-            */
         }
     }
 }
