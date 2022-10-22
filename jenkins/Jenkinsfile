@@ -18,12 +18,12 @@ pipeline {
             agent {
                 docker {
                     image 'maven:3.8.5-jdk-11'
-                    args '-v /root/.m2:/root/.m2 -v --net="tallerdeinvestigacin_devops"'
+                    args '-v /root/.m2:/root/.m2 --net="tallerdeinvestigacin_devops"'
                 }
             }
             steps {
                 withCredentials([string(credentialsId: 'sonar_login', variable: 'SECRET')]) {
-                    sh 'mvn sonar:sonar -Dsonar.host.url=http://172.20.0.2:9000 -Dsonar.login=$SECRET -Dsonar.projectKey=Test1'
+                    sh 'mvn sonar:sonar -Dsonar.host.url=http://172.20.0.4:9000 -Dsonar.login=$SECRET -Dsonar.projectKey=Test1'
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
             agent {
                 docker {
                     image 'maven:3.8.5-jdk-11'
-                    args '-v /root/.m2:/root/.m2 -v --net="tallerdeinvestigacin_devops"'
+                    args '-v /root/.m2:/root/.m2 --net="tallerdeinvestigacin_devops"'
                 }
             }
             environment {
