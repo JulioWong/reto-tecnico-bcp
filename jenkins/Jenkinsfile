@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3.8.5-jdk-11'
-            args '-v /root/.m2:/root/.m2 -v /var/run/docker.sock:/var/run/docker.sock --net="tallerdeinvestigacin_devops"'
+            args '-v /root/.m2:/root/.m2 -v --net="tallerdeinvestigacin_devops"'
         }
     }
     stages {
@@ -37,6 +37,7 @@ pipeline {
             }
         }*/
         stage('Deploy') {
+            agent none
             environment {
                 AWS_ACCESS_KEY_ID = credentials('AccessKeyID')
                 AWS_SECRET_ACCESS_KEY = credentials('SecretAccessKey')
