@@ -70,6 +70,12 @@ pipeline {
                 sh 'git status'
                 
                 echo "Git committer email: ${NEW_VERSION}"
+
+
+                sh 'curl -u admin:theanimalsW2$ -X GET http://172.20.0.8:8081/artifactory/usa1-release/com/bcp/desafio_tecnico/${NEW_VERSION}/desafio_tecnico-${NEW_VERSION}.jar -o deploy.jar'
+
+                sh 'ls'
+
             }
         }
     }
