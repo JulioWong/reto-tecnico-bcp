@@ -71,7 +71,7 @@ pipeline {
                 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 235274383227.dkr.ecr.us-east-1.amazonaws.com
                 curl -u ${JENKINS_USER}:${JENKINS_PASSWORD} -X GET http://172.20.0.8:8081/artifactory/usa1-release/com/bcp/desafio_tecnico/${NEW_VERSION}/desafio_tecnico-${NEW_VERSION}.jar -o deploy.jar
                 
-                echo 'FROM openjdk:8-jdk-alpine VOLUME /tmp ARG JAR_FILE ENTRYPOINT ["java", "-jar", "/deploy.jar"]' > Dockerfile
+                echo 'FROM openjdk:8-jdk-alpine VOLUME /tmp ARG JAR_FILE ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar", "/deploy.jar"]' > Dockerfile
 
                 docker build -t taller-investigacion .
 
