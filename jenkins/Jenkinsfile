@@ -53,7 +53,7 @@ pipeline {
             agent any
             steps{
                 script {
-                    def GIT_COMMIT_EMAIL = sh(script: 'git describe --tags --abbrev=0', returnStdout: true).trim()
+                    env.GIT_COMMIT_EMAIL = sh(script: 'git describe --tags --abbrev=0', returnStdout: true).trim()
                 }
             }
         }
