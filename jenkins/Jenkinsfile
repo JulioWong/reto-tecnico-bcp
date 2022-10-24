@@ -62,6 +62,8 @@ pipeline {
             environment {
                 AWS_ACCESS_KEY_ID = credentials('AccessKeyID')
                 AWS_SECRET_ACCESS_KEY = credentials('SecretAccessKey')
+                JENKINS_USER = credentials('jenkins_admin_username')
+                JENKINS_PASSWORD = credentials('jenkins_admin_password')
             }
             steps {
                 sh 'aws configure set region us-east-1'
@@ -72,7 +74,7 @@ pipeline {
                 echo "Git committer email: ${NEW_VERSION}"
 
 
-                sh 'curl -u admin:theanimalsW2$ -X GET http://172.20.0.8:8081/artifactory/usa1-release/com/bcp/desafio_tecnico/${NEW_VERSION}/desafio_tecnico-${NEW_VERSION}.jar -o deploy.jar'
+                sh 'curl -u ${JENKINS_USER}:${JENKINS_PASSWORD} -X GET http://172.20.0.8:8081/artifactory/usa1-release/com/bcp/desafio_tecnico/${NEW_VERSION}/desafio_tecnico-${NEW_VERSION}.jar -o deploy.jar'
 
                 sh 'ls'
 
