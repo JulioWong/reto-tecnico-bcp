@@ -61,10 +61,7 @@ pipeline {
                 sh 'aws --version'
                 sh 'git status'
 
-                def GIT_COMMIT_EMAIL = sh (
-                    script: 'git describe --tags --abbrev=0',
-                    returnStdout: true
-                ).trim()
+                def GIT_COMMIT_EMAIL = sh(script: 'git describe --tags --abbrev=0', returnStdout: true).trim()
                 echo "Git committer email: ${GIT_COMMIT_EMAIL}"
             }
         }
