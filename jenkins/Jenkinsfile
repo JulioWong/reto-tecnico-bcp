@@ -66,17 +66,16 @@ pipeline {
                 JENKINS_PASSWORD = credentials('jenkins_admin_password')
             }
             steps {
-                sh 'aws configure set region us-east-1'
-                sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 235274383227.dkr.ecr.us-east-1.amazonaws.com'
-                sh 'aws --version'
-                sh 'git status'
+                sh """
+                aws configure set region us-east-1
+                aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 235274383227.dkr.ecr.us-east-1.amazonaws.com
+                curl -u ${JENKINS_USER}:${JENKINS_PASSWORD} -X GET http://172.20.0.8:8081/artifactory/usa1-release/com/bcp/desafio_tecnico/${NEW_VERSION}/desafio_tecnico-${NEW_VERSION}.jar -o deploy.jar
+                echo 'This is a test' > data.txt
+
+                ls
+                """
+
                 
-                echo "Git committer email: ${NEW_VERSION}"
-
-
-                sh 'curl -u ${JENKINS_USER}:${JENKINS_PASSWORD} -X GET http://172.20.0.8:8081/artifactory/usa1-release/com/bcp/desafio_tecnico/${NEW_VERSION}/desafio_tecnico-${NEW_VERSION}.jar -o deploy.jar'
-
-                sh 'ls'
 
             }
         }
