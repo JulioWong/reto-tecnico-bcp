@@ -1,7 +1,7 @@
 pipeline {
     agent none
     stages {
-        stage('Unit Test') { 
+        /*stage('Unit Test') { 
             agent {
                 docker {
                     image 'maven:3.8.5-jdk-11'
@@ -48,7 +48,7 @@ pipeline {
                     sh 'mvn -DskipTests=true -s $MAVEN_SETTINGS --batch-mode release:clean release:prepare release:perform'
                 }
             }
-        }
+        }*/
         stage("Determine new version") {
             agent any
             steps{
