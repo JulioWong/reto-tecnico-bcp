@@ -83,7 +83,7 @@ pipeline {
 
                 docker tag taller-investigacion:latest 235274383227.dkr.ecr.us-east-1.amazonaws.com/taller-investigacion:${NEW_VERSION}
 
-                docker push 235274383227.dkr.ecr.us-east-1.amazonaws.com/taller-investigacion:latest
+                docker push 235274383227.dkr.ecr.us-east-1.amazonaws.com/taller-investigacion:${NEW_VERSION}
                 """
 
                 
