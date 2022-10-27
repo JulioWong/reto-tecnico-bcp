@@ -93,17 +93,17 @@ pipeline {
                 AWS_SECRET_ACCESS_KEY = credentials('SecretAccessKey')
             }
             steps {
-                steps {
-                    sh """
-                    aws configure set region us-east-1
-                    aws eks update-kubeconfig --name eksUTP --region us-east-1
+                
+                sh """
+                aws configure set region us-east-1
+                aws eks update-kubeconfig --name eksUTP --region us-east-1
 
-                    kubectl config view --minify
+                kubectl config view --minify
 
-                    kubectl get svc -n spring-boot
-                    """
+                kubectl get svc -n spring-boot
+                """
                     
-                }              
+                            
             }
         }
     }
