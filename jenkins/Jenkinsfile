@@ -1,6 +1,7 @@
 pipeline {
     agent none
     stages {
+        /*
         stage('Unit Test') { 
             agent {
                 docker {
@@ -48,7 +49,7 @@ pipeline {
                     sh 'mvn -DskipTests=true -s $MAVEN_SETTINGS --batch-mode release:clean release:prepare release:perform'
                 }
             }
-        }
+        }*/
         stage("Determine new version") {
             agent any
             steps{
@@ -80,7 +81,7 @@ pipeline {
 
                 docker build -t taller-investigacion .
 
-                docker tag taller-investigacion:latest 235274383227.dkr.ecr.us-east-1.amazonaws.com/taller-investigacion:latest
+                docker tag taller-investigacion:${NEW_VERSION} 235274383227.dkr.ecr.us-east-1.amazonaws.com/taller-investigacion:${NEW_VERSION}
 
                 docker push 235274383227.dkr.ecr.us-east-1.amazonaws.com/taller-investigacion:latest
                 """
