@@ -1,7 +1,6 @@
 pipeline {
     agent none
     stages {
-        /*
         stage('Unit Test') { 
             agent {
                 docker {
@@ -49,7 +48,7 @@ pipeline {
                     sh 'mvn -DskipTests=true -s $MAVEN_SETTINGS --batch-mode release:clean release:prepare release:perform'
                 }
             }
-        }*/
+        }
         stage("Determine new version") {
             agent any
             steps{
