@@ -1,7 +1,7 @@
 pipeline {
     agent none
     stages {
-        stage('Unit Test') { 
+        /*stage('Unit Test') { 
             agent {
                 docker {
                     image 'maven:3.8.5-jdk-11'
@@ -27,7 +27,7 @@ pipeline {
                 }
             }
         }
-        stage('Build') {
+        stage('Build Artifact') {
             agent {
                 docker {
                     image 'maven:3.8.5-jdk-11'
@@ -49,7 +49,7 @@ pipeline {
                 }
             }
         }
-        stage("Determine new version") {
+        stage("Get New version") {
             agent any
             steps{
                 script {
@@ -57,7 +57,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Build Docker Image') {
             agent any
             environment {
                 AWS_ACCESS_KEY_ID = credentials('AccessKeyID')
@@ -84,9 +84,26 @@ pipeline {
 
                 docker push 235274383227.dkr.ecr.us-east-1.amazonaws.com/taller-investigacion:${NEW_VERSION}
                 """
+            }
+        }*/
+        stage('Delivery AWS') {
+            agent any
+            environment {
+                AWS_ACCESS_KEY_ID = credentials('AccessKeyID')
+                AWS_SECRET_ACCESS_KEY = credentials('SecretAccessKey')
+            }
+            steps {
+                steps {
+                    sh """
+                    aws configure set region us-east-1
+                    aws eks update-kubeconfig --name eksUTP --region us-east-1
 
-                
+                    kubectl config view --minify
 
+                    kubectl get svc -n spring-boot
+                    """
+                    
+                }              
             }
         }
     }
