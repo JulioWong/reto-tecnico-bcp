@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.bcp</groupId>
 	<artifactId>desafio_tecnico</artifactId>
-	<version>0.0.36-SNAPSHOT</version>
+	<version>0.0.38-SNAPSHOT</version>
 	<name>desafio_tecnico</name>
 	<description>Desafio técnico Java</description>
 	
