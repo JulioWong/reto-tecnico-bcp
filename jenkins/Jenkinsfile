@@ -1,7 +1,7 @@
 pipeline {
     agent none
     stages {
-        /*stage('Unit Test') { 
+        stage('Unit Test') { 
             agent {
                 docker {
                     image 'maven:3.8.5-jdk-11'
@@ -23,7 +23,7 @@ pipeline {
             }
             steps {
                 withCredentials([string(credentialsId: 'sonar_login', variable: 'SECRET')]) {
-                    sh 'mvn sonar:sonar -Dsonar.host.url=http://172.20.0.6:9000 -Dsonar.login=$SECRET -Dsonar.projectKey=Test1'
+                    sh 'mvn sonar:sonar -Dsonar.host.url=http://172.20.0.5:9000 -Dsonar.login=$SECRET -Dsonar.projectKey=Test1'
                 }
             }
         }
@@ -48,7 +48,7 @@ pipeline {
                     sh 'mvn -DskipTests=true -s $MAVEN_SETTINGS --batch-mode release:clean release:prepare release:perform'
                 }
             }
-        }*/
+        }
         stage("Determine new version") {
             agent any
             steps{
