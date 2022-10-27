@@ -1,7 +1,7 @@
 pipeline {
     agent none
     stages {
-        /*stage('Unit Test') { 
+        stage('Unit Testing') { 
             agent {
                 docker {
                     image 'maven:3.8.5-jdk-11'
@@ -23,7 +23,7 @@ pipeline {
             }
             steps {
                 withCredentials([string(credentialsId: 'sonar_login', variable: 'SECRET')]) {
-                    sh 'mvn sonar:sonar -Dsonar.host.url=http://172.20.0.5:9000 -Dsonar.login=$SECRET -Dsonar.projectKey=Test1'
+                    sh 'mvn sonar:sonar -Dsonar.host.url=http://172.20.0.6:9000 -Dsonar.login=$SECRET -Dsonar.projectKey=Test1'
                 }
             }
         }
@@ -85,8 +85,8 @@ pipeline {
                 docker push 235274383227.dkr.ecr.us-east-1.amazonaws.com/taller-investigacion:${NEW_VERSION}
                 """
             }
-        }*/
-        stage('Delivery AWS') {
+        }
+        stage('Delivery to AWS') {
             agent any
             environment {
                 AWS_ACCESS_KEY_ID = credentials('AccessKeyID')
@@ -98,14 +98,12 @@ pipeline {
                 aws configure set region us-east-1
                 aws eks update-kubeconfig --name eksUTP --region us-east-1
 
-                aws sts get-caller-identity
+                aws s3api get-object --bucket taller-utp-kubernetes --key k8s_manifest_taller_utp.yml k8s_manifest_taller_utp.yml
 
-                cat ~/.kube/config
+                sed -i 's/<version>/${NEW_VERSION}/' k8s_manifest_taller_utp.yml
 
-                kubectl get svc -n spring-boot
-                """
-                    
-                            
+                kubectl apply -f k8s_manifest_taller_utp.yml
+                """       
             }
         }
     }
