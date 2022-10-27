@@ -41,7 +41,7 @@ public class ExchangeServiceImplTest {
 		
 		TestObserver<CalculateExchangeRateResponse> testObserver = exchangeService.calculateExchangeRate(calculateExchangeRateRequest).test();
 		testObserver.awaitTerminalEvent();
-		testObserver.assertValue(CalculateExchangeRateResponse -> CalculateExchangeRateResponse.getMonto_con_tipo_cambio().equals("193.38"));
+		testObserver.assertValue(CalculateExchangeRateResponse -> CalculateExchangeRateResponse.getMonto_con_tipo_cambio_v2().equals("193.38"));
 		verify(exchangeRepository, Mockito.times(1)).findByLocalCurrencyAndForeignCurrency(Mockito.anyString(), Mockito.anyString());
     }
 
