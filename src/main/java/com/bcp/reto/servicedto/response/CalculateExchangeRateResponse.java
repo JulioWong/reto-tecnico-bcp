@@ -29,11 +29,11 @@ public class CalculateExchangeRateResponse implements Serializable {
 		this.monto = monto;
 	}
 	
-	public String getMonto_con_tipo_cambio() {
+	public String getMonto_con_tipo_cambio_v2() {
 		return monto_con_tipo_cambio_v2;
 	}
 
-	public void setMonto_con_tipo_cambio(String monto_con_tipo_cambio) {
+	public void setMonto_con_tipo_cambio_v2(String monto_con_tipo_cambio) {
 		this.monto_con_tipo_cambio_v2 = monto_con_tipo_cambio;
 	}
 
