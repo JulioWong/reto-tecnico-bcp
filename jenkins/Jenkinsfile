@@ -98,7 +98,7 @@ pipeline {
                 aws configure set region us-east-1
                 aws eks update-kubeconfig --name eksUTP --region us-east-1
 
-                kubectl config view --minify
+                cat ~/.kube/config
 
                 kubectl get svc -n spring-boot
                 """
